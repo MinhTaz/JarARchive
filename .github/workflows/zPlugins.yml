@@ -17,8 +17,9 @@ jobs:
       java: 17
       target: "target/*"
   zKoth:
-    uses: Dungjava/ConstructProjects/.github/workflows/maven-build.yml@main
+    uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
     with:
       repository: "Maxlego08/zKoth"
       name: "zKoth"
-      java: 17
+      java: 20
+      target: "target/*"
