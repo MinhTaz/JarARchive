@@ -1,0 +1,19 @@
+name: FoliaFork
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/FoliaFork.yml'
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  Folia:
+    uses: Dungjava/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Folia"
+      target: "build/libs/*.jar"
+      name: "Folia"
+      java: 17
+      readonly: true
