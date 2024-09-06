@@ -12,7 +12,7 @@ jobs:
   Folia:
     uses: Dungjava/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
-      repository: "Folia"
+      repository: "PaperMC/Folia"
       target: "build/libs/*.jar"
       name: "Folia"
       java: 17
