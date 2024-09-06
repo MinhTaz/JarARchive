@@ -9,7 +9,7 @@ on:
     - cron: '0 */6 * * *'
 
 
-
+jobs: 
   HuskSync:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
