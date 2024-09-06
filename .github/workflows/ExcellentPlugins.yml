@@ -15,35 +15,35 @@ jobs:
       repository: "nulli0n/ExcellentJobs-spigot"
       name: "ExcellentJobs-spigot"
       java: 17
-   ExcellentShop-spigot:
+  ExcellentShop-spigot:
     uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
     with:
       repository: "nulli0n/ExcellentShop-spigot"
       name: "ExcellentShop-spigot"
       java: 17
  
-   AdvancedMobArena-spigot:
+  AdvancedMobArena-spigot:
     uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
     with:
       repository: "nulli0n/AdvancedMobArena-spigot"
       name: "AdvancedMobArena-spigot"
       java: 17
  
-   ExcellentChallenges-spigot:
+  ExcellentChallenges-spigot:
     uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
     with:
       repository: "nulli0n/ExcellentChallenges-spigot"
       name: "ExcellentChallenges-spigot"
       java: 17
  
-   CombatPets-spigot:
+  CombatPets-spigot:
     uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
     with:
       repository: "nulli0n/CombatPets-spigot"
       name: "CombatPets-spigot"
       java: 17
  
-   LootConomy-spigot:
+  LootConomy-spigot:
     uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
     with:
       repository: "nulli0n/LootConomy-spigot"
