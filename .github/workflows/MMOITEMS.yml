@@ -1,0 +1,18 @@
+name: MMOITEMS
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/MMOITEMS.yml'
+  schedule:
+    - cron: '0 0 */3 * *'
+
+jobs: 
+  AquaMCVN/mmoitems:
+    uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
+    with:
+      repository: "AquaMCVN/mmoitems"
+      name: "AquaMCVN/mmoitems"
+      java: 17
+ 
