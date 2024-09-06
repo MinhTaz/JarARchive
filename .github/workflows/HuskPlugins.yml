@@ -10,14 +10,6 @@ on:
 
 
 jobs: 
-  HuskSync:
-    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
-    with:
-      repository: "WiIIiam278/HuskSync"
-      target: "bin/*"
-      name: "HuskSync"
-      java: 17
-      readonly: true
   HuskClaims:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
