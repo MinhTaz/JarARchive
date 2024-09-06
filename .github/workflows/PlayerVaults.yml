@@ -10,10 +10,10 @@ on:
 
 jobs:
   PlayerVaults:
-    uses: Dungjava/ConstructProjects/.github/workflows/maven-build.yml@main
+    uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
     with:
       repository: "drtshock/PlayerVaults"
       name: "PlayerVaults"
-      target: "Bukkit/build/libs/*.jar"
+      target: "target/*"
       java: 17
 
