@@ -1,0 +1,36 @@
+name: HuskPlugins
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/HuskPlugins.yml'
+  schedule:
+    - cron: '0 */6 * * *'
+
+
+
+  HuskSync:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "WiIIiam278/HuskSync"
+      target: "bin/*"
+      name: "HuskSync"
+      java: 17
+      readonly: true
+  HuskClaims:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "WiIIiam278/HuskClaims"
+      target: "bin/*"
+      name: "HuskClaims"
+      java: 17
+      readonly: true
+  HuskTowns:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "WiIIiam278/HuskTowns"
+      target: "bin/*"
+      name: "HuskTowns"
+      java: 17
+      readonly: true
