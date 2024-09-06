@@ -10,14 +10,14 @@ on:
 
 jobs:
   zEssentials:
-    uses: AquaMCVN/ConstructProjects/.github/workflows/gradle-build.yml@main
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Maxlego08/zEssentials"
       name: "zEssentials"
       java: 17
       target: "target/*"
   zKoth:
-    uses: AquaMCVN/ConstructProjects/.github/workflows/gradle-build.yml@main
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Maxlego08/zKoth"
       name: "zKoth"
