@@ -2,9 +2,11 @@ name: EcoPlugins
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
+    paths:
+      - '.github/workflows/EcoPlugins.yml'
+  schedule:
+    - cron: '0 */6 * * *'
 
 jobs:
   EcoJobs:
