@@ -1,0 +1,17 @@
+name: PlayerVaults
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/PlayerVaults.yml'
+  schedule:
+    - cron: '0 */12 * * *'
+
+jobs:
+  PlayerVaults:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "drtshock/PlayerVaults"
+      name: "PlayerVaults"
+      target: "Bukkit/build/libs/*.jar"
