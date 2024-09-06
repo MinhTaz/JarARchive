@@ -1,0 +1,147 @@
+name: Auxilor
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/Auxilor.yml'
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  EcoJobs:
+    uses: Dungjava/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoJobs"
+      target: "bin/*"
+      name: "EcoJobs"
+      java: 17
+      readonly: true
+  EcoPets:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoPets"
+      target: "bin/*"
+      name: "EcoPets"
+      java: 17
+      readonly: true
+  EcoCrates:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoCrates"
+      target: "bin/*"
+      name: "EcoCrates"
+      java: 17
+      readonly: true
+  EcoMobs:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoMobs"
+      target: "bin/*"
+      name: "EcoMobs"
+      java: 17
+      readonly: true
+  EcoEnchants:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoEnchants"
+      target: "bin/*"
+      name: "EcoEnchants"
+      java: 17
+      readonly: true
+  EcoSkills:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoSkills"
+      target: "bin/*"
+      name: "EcoSkills"
+      java: 17
+      readonly: true
+  Reforges:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/Reforges"
+      target: "bin/*"
+      name: "Reforges"
+      java: 17
+      readonly: true
+  Talismans:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/Talismans"
+      target: "bin/*"
+      name: "Talismans"
+      java: 17
+      readonly: true
+  EcoArmor:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoArmor"
+      target: "bin/*"
+      name: "EcoArmor"
+      java: 17
+      readonly: true
+  EcoItems:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoItems"
+      target: "bin/*"
+      name: "EcoItems"
+      java: 17
+      readonly: true
+  StatTrackers:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/StatTrackers"
+      target: "bin/*"
+      name: "StatTrackers"
+      java: 17
+      readonly: true
+  Boosters:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/Boosters"
+      target: "bin/*"
+      name: "Boosters"
+      java: 17
+      readonly: true
+  Actions:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/Actions"
+      target: "bin/*"
+      name: "Actions"
+      java: 17
+      readonly: true
+  EcoQuests:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoQuests"
+      target: "bin/*"
+      name: "EcoQuests"
+      java: 17
+      readonly: true
+  EcoScrolls:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoScrolls"
+      target: "bin/*"
+      name: "EcoScrolls"
+      java: 17
+      readonly: true
+  EcoShop:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoShop"
+      target: "bin/*"
+      name: "EcoShop"
+      java: 17
+      readonly: true
+  EcoBits:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoBits"
+      target: "bin/*"
+      name: "EcoBits"
+      java: 17
+      readonly: true
