@@ -9,7 +9,7 @@ on:
     - cron: '0 */12 * * *'
 
 jobs:
-  PlayerVaults:
+  Spartan-AntiCheat:
     uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
     with:
       repository: "Vagdedes/Spartan-AntiCheat"
