@@ -1,4 +1,4 @@
-name: Folia Build
+name: Folia MC
 on:
   push:
     branches: [ "main" ]
