@@ -30,10 +30,27 @@ jobs:
     - name: createReobfBundlerJar
       run: ./gradlew createReobfBundlerJar
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Folia-build
         path: build/libs
+    - name: Send Discord Notification
+      uses: sarisia/actions-status-discord@v1
+      if: always()
+      with:
+        webhook: ${{ secrets.https://discord.com/api/webhooks/1282569332689338398/M3JXIw-E1p_KNaPYorlMXGW7x_jxuiF9weOt9vVJfBULPXann_J8HK79c7QmVdTtDHK- }}
+        status: ${{ job.status }}
+        title: "Folia Build"
+        description: "Build completed"
+        color: 0x0000ff
+        username: GitHub Actions
+        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+    - name: Upload to Discord
+      uses: sinshutu/upload-to-discord@master
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.https://discord.com/api/webhooks/1282569332689338398/M3JXIw-E1p_KNaPYorlMXGW7x_jxuiF9weOt9vVJfBULPXann_J8HK79c7QmVdTtDHK- }}
+      with:
+        args: build/libs/*.jar
   dependency-submission:
     runs-on: ubuntu-latest
     permissions:
