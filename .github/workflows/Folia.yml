@@ -1,9 +1,11 @@
 name: Folia MC
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
+    paths:
+      - '.github/workflows/Folia.yml'
+  schedule:
+    - cron: '0 */12 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,6 +36,29 @@ jobs:
       with:
         name: Folia-build
         path: build/libs
+    - name: Get artifact name
+      id: get_artifact
+      run: |
+        FILE_NAME=$(ls build/libs/*.jar | head -n 1)
+        echo "file_name=$(basename $FILE_NAME)" >> $GITHUB_OUTPUT
+      shell: bash
+    - name: Send to Discord
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+      run: |
+        if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+          echo "No artifact found. Sending error message to Discord."
+          curl -H "Content-Type: application/json" \
+               -d '{"content":"Error: No Folia jar was created in the build."}' \
+               $DISCORD_WEBHOOK
+        else
+          echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+          curl -H "Content-Type: multipart/form-data" \
+               -F "file=@build/libs/${{ steps.get_artifact.outputs.file_name }}" \
+               -F "content=New build of Folia is available!" \
+               $DISCORD_WEBHOOK
+        fi
+      shell: bash
     - name: Send Discord Notification
       uses: sarisia/actions-status-discord@v1
       if: always()
@@ -45,12 +70,7 @@ jobs:
         color: 0x0000ff
         username: GitHub Actions
         avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-    - name: Upload to Discord
-      uses: sinshutu/upload-to-discord@master
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
-      with:
-        args: build/libs/*.jar
+
   dependency-submission:
     runs-on: ubuntu-latest
     permissions:
