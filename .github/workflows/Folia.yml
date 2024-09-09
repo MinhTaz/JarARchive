@@ -38,7 +38,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       if: always()
       with:
-        webhook: ${{ secrets.https://discord.com/api/webhooks/1282569332689338398/M3JXIw-E1p_KNaPYorlMXGW7x_jxuiF9weOt9vVJfBULPXann_J8HK79c7QmVdTtDHK- }}
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
         status: ${{ job.status }}
         title: "Folia Build"
         description: "Build completed"
@@ -48,7 +48,7 @@ jobs:
     - name: Upload to Discord
       uses: sinshutu/upload-to-discord@master
       env:
-        DISCORD_WEBHOOK: ${{ secrets.https://discord.com/api/webhooks/1282569332689338398/M3JXIw-E1p_KNaPYorlMXGW7x_jxuiF9weOt9vVJfBULPXann_J8HK79c7QmVdTtDHK- }}
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       with:
         args: build/libs/*.jar
   dependency-submission:
