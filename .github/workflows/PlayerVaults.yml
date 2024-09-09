@@ -1,0 +1,18 @@
+name: PlayerVaults
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/PlayerVaults.yml'
+  schedule:
+    - cron: '0 */12 * * *'
+
+jobs:
+  PlayerVaults:
+    uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
+    with:
+      repository: "drtshock/PlayerVaults"
+      name: "PlayerVaults"
+      target: "target/*"
+      java: 17
