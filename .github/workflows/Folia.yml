@@ -1,4 +1,4 @@
-name: Folia
+name: Folia Build
 on:
   push:
     branches: [ "main" ]
