@@ -1,5 +1,4 @@
 name: PlayerVaults
-
 on:
   push:
     branches: [ main ]
@@ -7,7 +6,6 @@ on:
       - '.github/workflows/PlayerVaults.yml'
   schedule:
     - cron: '0 */12 * * *'
-
 jobs:
   PlayerVaults:
     uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
@@ -16,3 +14,26 @@ jobs:
       name: "PlayerVaults"
       target: "target/*"
       java: 17
+
+  discord_webhook:
+    needs: PlayerVaults
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: PlayerVaults
+          path: ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: echo "::set-output name=file_name::$(ls ./artifact | head -n 1)"
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -H "Content-Type: multipart/form-data" \
+               -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+               -F "content=New build of PlayerVaults is available!" \
+               $DISCORD_WEBHOOK
