@@ -1,4 +1,5 @@
 name: HuskPlugins
+
 on:
   push:
     branches: [ main ]
@@ -7,97 +8,20 @@ on:
   schedule:
     - cron: '0 */6 * * *'
 
+
 jobs: 
   HuskClaims:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "WiIIiam278/HuskClaims"
-      target: "target/HuskClaims-{Paper,Bukkit}-*-*.jar"
+      target: "target/*"
       name: "HuskClaims"
       java: 17
-      readonly: true
-
-  HuskClaims_discord_webhook:
-    needs: HuskClaims
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: HuskClaims
-          path: ./artifact
-      - name: List files
-        run: ls -R ./artifact
-      - name: Filter and prepare artifacts
-        run: |
-          mkdir -p ./filtered_artifact
-          cp ./artifact/HuskClaims-Paper-*-*.jar ./filtered_artifact/ 2>/dev/null || :
-          cp ./artifact/HuskClaims-Bukkit-*-*.jar ./filtered_artifact/ 2>/dev/null || :
-          rm -f ./filtered_artifact/*-javadoc.jar ./filtered_artifact/*-sources.jar
-        shell: bash
-      - name: Send to Discord
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK2 }}
-        run: |
-          if [ -z "$(ls -A ./filtered_artifact)" ]; then
-            echo "No artifacts found. Sending error message to Discord."
-            curl -H "Content-Type: application/json" \
-                 -d '{"content":"Error: No valid artifacts were created in the HuskClaims build."}' \
-                 $DISCORD_WEBHOOK
-          else
-            for file in ./filtered_artifact/*; do
-              echo "Sending artifact to Discord: $(basename "$file")"
-              curl -H "Content-Type: multipart/form-data" \
-                   -F "file=@$file" \
-                   -F "content=New build of HuskClaims is available: $(basename "$file")" \
-                   $DISCORD_WEBHOOK
-            done
-          fi
-        shell: bash
-
   HuskTowns:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "WiIIiam278/HuskTowns"
-      target: "target/HuskTowns-{Paper,Bukkit}-*-*.jar"
+      target: "target/*"
       name: "HuskTowns"
       java: 17
-      readonly: true
 
-  HuskTowns_discord_webhook:
-    needs: HuskTowns
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: HuskTowns
-          path: ./artifact
-      - name: List files
-        run: ls -R ./artifact
-      - name: Filter and prepare artifacts
-        run: |
-          mkdir -p ./filtered_artifact
-          cp ./artifact/HuskTowns-Paper-*-*.jar ./filtered_artifact/ 2>/dev/null || :
-          cp ./artifact/HuskTowns-Bukkit-*-*.jar ./filtered_artifact/ 2>/dev/null || :
-          rm -f ./filtered_artifact/*-javadoc.jar ./filtered_artifact/*-sources.jar
-        shell: bash
-      - name: Send to Discord
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK2 }}
-        run: |
-          if [ -z "$(ls -A ./filtered_artifact)" ]; then
-            echo "No artifacts found. Sending error message to Discord."
-            curl -H "Content-Type: application/json" \
-                 -d '{"content":"Error: No valid artifacts were created in the HuskTowns build."}' \
-                 $DISCORD_WEBHOOK
-          else
-            for file in ./filtered_artifact/*; do
-              echo "Sending artifact to Discord: $(basename "$file")"
-              curl -H "Content-Type: multipart/form-data" \
-                   -F "file=@$file" \
-                   -F "content=New build of HuskTowns is available: $(basename "$file")" \
-                   $DISCORD_WEBHOOK
-            done
-          fi
-        shell: bash
