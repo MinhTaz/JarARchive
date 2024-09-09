@@ -41,9 +41,6 @@ on:
         default: "clean package"
         required: false
         type: string
-      discord_webhook:
-        required: true
-        type: string
 jobs:
   build:
     runs-on: ${{ inputs.os }}
@@ -69,13 +66,3 @@ jobs:
       with:
         name: ${{ inputs.name }}
         path: ${{ inputs.target }}
-    - name: Upload to Discord
-      env:
-        DISCORD_WEBHOOK: ${{ inputs.discord_webhook }}
-      run: |
-        artifact_path=$(find ${{ inputs.target }} -type f -print -quit)
-        if [ -n "$artifact_path" ]; then
-          curl -H "Content-Type: multipart/form-data" -X POST -F "file=@$artifact_path" $DISCORD_WEBHOOK
-        else
-          echo "No artifact found to upload"
-        fi
