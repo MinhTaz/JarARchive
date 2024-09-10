@@ -40,9 +40,9 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
-            echo "No artifact found. Sending error message to Discord."
+            echo "Lỗi! Không tìm thấy file .jar."
             curl -H "Content-Type: application/json" \
-                 -d '{"content":"Error: No artifact was created in the PlayerVaults build."}' \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
                  $DISCORD_WEBHOOK
           else
             echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
