@@ -39,7 +39,7 @@ jobs:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -85,7 +85,7 @@ jobs:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -131,7 +131,7 @@ jobs:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -177,7 +177,7 @@ jobs:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -223,7 +223,7 @@ jobs:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -269,7 +269,7 @@ jobs:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -315,7 +315,7 @@ jobs:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -360,7 +360,7 @@ jobs:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -375,7 +375,7 @@ jobs:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-EcoArmor:
+  EcoArmor:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/EcoArmor"
@@ -383,7 +383,7 @@ EcoArmor:
       name: "EcoArmor"
       java: 17
       readonly: true
-EcoArmor_discord_webhook:
+  EcoArmor_discord_webhook:
     needs: EcoArmor
     runs-on: ubuntu-latest
     steps:
@@ -405,7 +405,7 @@ EcoArmor_discord_webhook:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -420,7 +420,7 @@ EcoArmor_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-EcoItems:
+  EcoItems:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/EcoItems"
@@ -428,7 +428,7 @@ EcoItems:
       name: "EcoItems"
       java: 17
       readonly: true
-EcoItems_discord_webhook:
+  EcoItems_discord_webhook:
     needs: EcoItems
     runs-on: ubuntu-latest
     steps:
@@ -450,7 +450,7 @@ EcoItems_discord_webhook:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -465,7 +465,7 @@ EcoItems_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-StatTrackers:
+  StatTrackers:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/StatTrackers"
@@ -473,7 +473,7 @@ StatTrackers:
       name: "StatTrackers"
       java: 17
       readonly: true
-StatTrackers_discord_webhook:
+  StatTrackers_discord_webhook:
     needs: StatTrackers
     runs-on: ubuntu-latest
     steps:
@@ -495,7 +495,7 @@ StatTrackers_discord_webhook:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -510,7 +510,7 @@ StatTrackers_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-Boosters:
+  Boosters:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/Boosters"
@@ -518,7 +518,7 @@ Boosters:
       name: "Boosters"
       java: 17
       readonly: true
-Boosters_discord_webhook:
+  Boosters_discord_webhook:
     needs: Boosters
     runs-on: ubuntu-latest
     steps:
@@ -540,7 +540,7 @@ Boosters_discord_webhook:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -555,7 +555,7 @@ Boosters_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-Actions:
+  Actions:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/Actions"
@@ -563,7 +563,7 @@ Actions:
       name: "Actions"
       java: 17
       readonly: true
-Actions_discord_webhook:
+  Actions_discord_webhook:
     needs: Actions
     runs-on: ubuntu-latest
     steps:
@@ -585,7 +585,7 @@ Actions_discord_webhook:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -600,7 +600,7 @@ Actions_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-EcoQuests:
+  EcoQuests:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/EcoQuests"
@@ -608,7 +608,7 @@ EcoQuests:
       name: "EcoQuests"
       java: 17
       readonly: true
-EcoQuests_discord_webhook:
+  EcoQuests_discord_webhook:
     needs: EcoQuests
     runs-on: ubuntu-latest
     steps:
@@ -630,7 +630,7 @@ EcoQuests_discord_webhook:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -645,7 +645,7 @@ EcoQuests_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-EcoScrolls:
+  EcoScrolls:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/EcoScrolls"
@@ -653,7 +653,7 @@ EcoScrolls:
       name: "EcoScrolls"
       java: 17
       readonly: true
-EcoScrolls_discord_webhook:
+  EcoScrolls_discord_webhook:
     needs: EcoScrolls
     runs-on: ubuntu-latest
     steps:
@@ -675,7 +675,7 @@ EcoScrolls_discord_webhook:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -690,7 +690,7 @@ EcoScrolls_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-EcoShop:
+  EcoShop:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/EcoShop"
@@ -698,7 +698,7 @@ EcoShop:
       name: "EcoShop"
       java: 17
       readonly: true
-EcoShop_discord_webhook:
+  EcoShop_discord_webhook:
     needs: EcoShop
     runs-on: ubuntu-latest
     steps:
@@ -720,7 +720,7 @@ EcoShop_discord_webhook:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
@@ -735,7 +735,7 @@ EcoShop_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-EcoBits:
+  EcoBits:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/EcoBits"
@@ -743,7 +743,7 @@ EcoBits:
       name: "EcoBits"
       java: 17
       readonly: true
-EcoBits_discord:
+  EcoBits_discord:
     needs: EcoBits
     runs-on: ubuntu-latest
     steps:
@@ -765,7 +765,7 @@ EcoBits_discord:
 
       - name: Send to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
         run: |
           if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
             echo "Lỗi! Không tìm thấy file .jar."
