@@ -330,7 +330,6 @@ jobs:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-
   Talismans:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -376,8 +375,6 @@ jobs:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-
-
 EcoArmor:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -423,7 +420,6 @@ EcoArmor_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-
 EcoItems:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -469,7 +465,6 @@ EcoItems_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-
 StatTrackers:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -515,7 +510,6 @@ StatTrackers_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-
 Boosters:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -561,7 +555,6 @@ Boosters_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-
 Actions:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -607,7 +600,6 @@ Actions_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-
 EcoQuests:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -653,7 +645,6 @@ EcoQuests_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-
 EcoScrolls:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -699,7 +690,6 @@ EcoScrolls_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-
 EcoShop:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -745,8 +735,6 @@ EcoShop_discord_webhook:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-
-
 EcoBits:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
