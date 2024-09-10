@@ -478,7 +478,7 @@ StatTrackers:
       name: "StatTrackers"
       java: 17
       readonly: true
-  StatTrackers_discord_webhook:
+StatTrackers_discord_webhook:
     needs: StatTrackers
     runs-on: ubuntu-latest
     steps:
@@ -516,7 +516,7 @@ StatTrackers:
           fi
         shell: bash
 
-  Boosters:
+Boosters:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/Boosters"
@@ -524,7 +524,7 @@ StatTrackers:
       name: "Boosters"
       java: 17
       readonly: true
-  Boosters_discord_webhook:
+Boosters_discord_webhook:
     needs: Boosters
     runs-on: ubuntu-latest
     steps:
@@ -562,7 +562,7 @@ StatTrackers:
           fi
         shell: bash
 
-  Actions:
+Actions:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/Actions"
@@ -570,7 +570,7 @@ StatTrackers:
       name: "Actions"
       java: 17
       readonly: true
-  Actions_discord_webhook:
+Actions_discord_webhook:
     needs: Actions
     runs-on: ubuntu-latest
     steps:
@@ -608,7 +608,7 @@ StatTrackers:
           fi
         shell: bash
 
-  EcoQuests:
+EcoQuests:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/EcoQuests"
@@ -616,7 +616,7 @@ StatTrackers:
       name: "EcoQuests"
       java: 17
       readonly: true
-  EcoQuests_discord_webhook:
+EcoQuests_discord_webhook:
     needs: EcoQuests
     runs-on: ubuntu-latest
     steps:
@@ -654,7 +654,7 @@ StatTrackers:
           fi
         shell: bash
 
-  EcoScrolls:
+EcoScrolls:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/EcoScrolls"
@@ -662,7 +662,7 @@ StatTrackers:
       name: "EcoScrolls"
       java: 17
       readonly: true
-  EcoScrolls_discord_webhook:
+EcoScrolls_discord_webhook:
     needs: EcoScrolls
     runs-on: ubuntu-latest
     steps:
@@ -700,7 +700,7 @@ StatTrackers:
           fi
         shell: bash
 
-  EcoShop:
+EcoShop:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/EcoShop"
@@ -708,7 +708,7 @@ StatTrackers:
       name: "EcoShop"
       java: 17
       readonly: true
-  EcoShop_discord_webhook:
+EcoShop_discord_webhook:
     needs: EcoShop
     runs-on: ubuntu-latest
     steps:
@@ -747,7 +747,7 @@ StatTrackers:
         shell: bash
 
 
-  EcoBits:
+EcoBits:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/EcoBits"
@@ -755,7 +755,7 @@ StatTrackers:
       name: "EcoBits"
       java: 17
       readonly: true
-  EcoBits_discord:
+EcoBits_discord:
     needs: EcoBits
     runs-on: ubuntu-latest
     steps:
