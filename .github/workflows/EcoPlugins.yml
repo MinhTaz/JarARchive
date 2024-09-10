@@ -17,6 +17,44 @@ jobs:
       name: "EcoJobs"
       java: 17
       readonly: true
+  EcoJobs_webhook:
+    needs: EcoJobs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EcoJobs
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > EcoJobs < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   EcoPets:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -25,6 +63,44 @@ jobs:
       name: "EcoPets"
       java: 17
       readonly: true
+  EcoPets_webhook:
+    needs: EcoPets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EcoPets
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > EcoPets < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   EcoCrates:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -33,6 +109,44 @@ jobs:
       name: "EcoCrates"
       java: 17
       readonly: true
+  ecocrates_discord_webhook:
+    needs: EcoCrates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EcoCrates
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > EcoCrates < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   EcoMobs:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -41,6 +155,44 @@ jobs:
       name: "EcoMobs"
       java: 17
       readonly: true
+  EcoMobs_discord_webhook:
+    needs: EcoMobs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EcoMobs
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > EcoMobs < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   EcoEnchants:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -49,6 +201,44 @@ jobs:
       name: "EcoEnchants"
       java: 17
       readonly: true
+  EcoEnchants_discord_webhook:
+    needs: EcoEnchants
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EcoEnchants
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > EcoEnchants < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   EcoSkills:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -57,6 +247,44 @@ jobs:
       name: "EcoSkills"
       java: 17
       readonly: true
+  EcoSkills_discord_webhook:
+    needs: EcoSkills
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EcoSkills
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > EcoSkills < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   Reforges:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -65,6 +293,44 @@ jobs:
       name: "Reforges"
       java: 17
       readonly: true
+  Reforges_discord_webhook:
+    needs: Reforges
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Reforges
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > Reforges < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   Talismans:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -73,7 +339,46 @@ jobs:
       name: "Talismans"
       java: 17
       readonly: true
-  EcoArmor:
+  Talismans_discord_webhook:
+    needs: Talismans
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Talismans
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > Talismans < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
+
+EcoArmor:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
       repository: "Auxilor/EcoArmor"
@@ -81,6 +386,44 @@ jobs:
       name: "EcoArmor"
       java: 17
       readonly: true
+  EcoArmor_discord_webhook:
+    needs: EcoArmor
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EcoArmor
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > EcoArmor < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   EcoItems:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -89,6 +432,44 @@ jobs:
       name: "EcoItems"
       java: 17
       readonly: true
+  EcoItems_discord_webhook:
+    needs: EcoItems
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EcoItems
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > EcoItems < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   StatTrackers:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -97,6 +478,44 @@ jobs:
       name: "StatTrackers"
       java: 17
       readonly: true
+  StatTrackers_discord_webhook:
+    needs: StatTrackers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: StatTrackers
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > StatTrackers < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   Boosters:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -105,6 +524,44 @@ jobs:
       name: "Boosters"
       java: 17
       readonly: true
+  Boosters_discord_webhook:
+    needs: Boosters
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Boosters
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > Boosters < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   Actions:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -113,6 +570,44 @@ jobs:
       name: "Actions"
       java: 17
       readonly: true
+  Actions_discord_webhook:
+    needs: Actions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Actions
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > Actions < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   EcoQuests:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -121,6 +616,44 @@ jobs:
       name: "EcoQuests"
       java: 17
       readonly: true
+  EcoQuests_discord_webhook:
+    needs: EcoQuests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EcoQuests
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > EcoQuests < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   EcoScrolls:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -129,6 +662,44 @@ jobs:
       name: "EcoScrolls"
       java: 17
       readonly: true
+  EcoScrolls_discord_webhook:
+    needs: EcoScrolls
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EcoScrolls
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > EcoScrolls < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
   EcoShop:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -137,6 +708,45 @@ jobs:
       name: "EcoShop"
       java: 17
       readonly: true
+  EcoShop_discord_webhook:
+    needs: EcoShop
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EcoShop
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > EcoShop < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
+
   EcoBits:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -145,3 +755,40 @@ jobs:
       name: "EcoBits"
       java: 17
       readonly: true
+  EcoBits_discord:
+    needs: EcoBits
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: EcoBits
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK1 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > EcoBits < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
