@@ -48,7 +48,7 @@ jobs:
             echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
             curl -H "Content-Type: multipart/form-data" \
                  -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
-                 -F "content=# Zessentials! #" \
+                 -F "content=# > Zessentials! < #" \
                  $DISCORD_WEBHOOK
           fi
         shell: bash
