@@ -285,51 +285,6 @@ jobs:
           fi
         shell: bash
 
-  Reforges:
-    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
-    with:
-      repository: "Auxilor/Reforges"
-      target: "bin/*"
-      name: "Reforges"
-      java: 17
-      readonly: true
-  Reforges_discord_webhook:
-    needs: Reforges
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: Reforges
-          path: ./artifact
-
-      - name: List files
-        run: ls -R ./artifact
-
-      - name: Get artifact name
-        id: get_artifact
-        run: |
-          FILE_NAME=$(ls ./artifact | head -n 1)
-          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
-        shell: bash
-
-      - name: Send to Discord
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
-        run: |
-          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
-            echo "Lỗi! Không tìm thấy file .jar."
-            curl -H "Content-Type: application/json" \
-                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
-                 $DISCORD_WEBHOOK
-          else
-            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
-            curl -H "Content-Type: multipart/form-data" \
-                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
-                 -F "content=# > Reforges < #" \
-                 $DISCORD_WEBHOOK
-          fi
-        shell: bash
   Talismans:
     uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
     with:
@@ -777,6 +732,52 @@ jobs:
             curl -H "Content-Type: multipart/form-data" \
                  -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
                  -F "content=# > EcoBits < #" \
+                 $DISCORD_WEBHOOK
+          fi
+        shell: bash
+
+  Reforges:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/Reforges"
+      target: "bin/*"
+      name: "Reforges"
+      java: 17
+      readonly: true
+  Reforges_discord_webhook:
+    needs: Reforges
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Reforges
+          path: ./artifact
+
+      - name: List files
+        run: ls -R ./artifact
+
+      - name: Get artifact name
+        id: get_artifact
+        run: |
+          FILE_NAME=$(ls ./artifact | head -n 1)
+          echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK3 }}
+        run: |
+          if [ -z "${{ steps.get_artifact.outputs.file_name }}" ]; then
+            echo "Lỗi! Không tìm thấy file .jar."
+            curl -H "Content-Type: application/json" \
+                 -d '{"content":"Error: Không tìm thấy file .jar."}' \
+                 $DISCORD_WEBHOOK
+          else
+            echo "Sending artifact to Discord: ${{ steps.get_artifact.outputs.file_name }}"
+            curl -H "Content-Type: multipart/form-data" \
+                 -F "file=@./artifact/${{ steps.get_artifact.outputs.file_name }}" \
+                 -F "content=# > Reforges < #" \
                  $DISCORD_WEBHOOK
           fi
         shell: bash
