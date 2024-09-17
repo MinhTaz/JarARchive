@@ -1,0 +1,19 @@
+name: dotman
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/dotman.yml'
+  schedule:
+    - cron: '0 */6 * * *'
+
+
+jobs: 
+  dotman:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "minevn/dotman"
+      target: "target/*"
+      name: "dotman"
+      java: 17
