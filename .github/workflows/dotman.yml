@@ -13,24 +13,28 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Get DotMan version
-        uses: pozetroninc/github-action-get-latest-release@master
         id: dotman-plugin
-        with:
-          owner: minevn
-          repo: dotman
+        run: |
+          LATEST_RELEASE=$(curl -s https://api.github.com/repos/minevn/dotman/releases/latest | jq -r .tag_name)
+          echo "release=$LATEST_RELEASE" >> $GITHUB_OUTPUT
 
       - name: Get MineVNLib version
-        uses: pozetroninc/github-action-get-latest-release@master
         id: minevnlib-plugin
-        with:
-          owner: minevn
-          repo: minevn-library
+        run: |
+          LATEST_RELEASE=$(curl -s https://api.github.com/repos/minevn/minevn-library/releases/latest | jq -r .tag_name)
+          echo "release=$LATEST_RELEASE" >> $GITHUB_OUTPUT
 
       - name: Download DotMan & MineVNLib
         run: |
           mkdir -p target
-          wget -O ./target/DotMan.jar "https://github.com/minevn/dotman/releases/download/${{ steps.dotman-plugin.outputs.release }}/DotMan.jar"
-          wget -O ./target/MineVNLib.jar "https://github.com/minevn/minevn-library/releases/download/${{ steps.minevnlib-plugin.outputs.release }}/MineVNLib.jar"
+          DOTMAN_VERSION=${{ steps.dotman-plugin.outputs.release }}
+          MINEVNLIB_VERSION=${{ steps.minevnlib-plugin.outputs.release }}
+          
+          echo "Downloading DotMan version: $DOTMAN_VERSION"
+          wget -O ./target/DotMan.jar "https://github.com/minevn/dotman/releases/download/$DOTMAN_VERSION/DotMan.jar"
+          
+          echo "Downloading MineVNLib version: $MINEVNLIB_VERSION"
+          wget -O ./target/MineVNLib.jar "https://github.com/minevn/minevn-library/releases/download/$MINEVNLIB_VERSION/MineVNLib.jar"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4.3.1
