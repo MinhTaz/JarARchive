@@ -1,19 +1,39 @@
-name: dotman
+name: Build
 
 on:
+  workflow_dispatch:
+  pull_request:
   push:
-    branches: [ main ]
-    paths:
-      - '.github/workflows/dotman.yml'
-  schedule:
-    - cron: '0 */6 * * *'
 
+jobs:
+  build:
+    if: (github.event_name == 'pull_request' && github.event.action == 'labeled') || github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-jobs: 
-  dotman:
-    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
-    with:
-      repository: "minevn/dotman"
-      target: "target/*"
-      name: "dotman"
-      java: 17
+      - name: Get DotMan version
+        uses: pozetroninc/github-action-get-latest-release@master
+        id: dotman-plugin
+        with:
+          owner: minevn
+          repo: dotman
+
+      - name: Get MineVNLib version
+        uses: pozetroninc/github-action-get-latest-release@master
+        id: minevnlib-plugin
+        with:
+          owner: minevn
+          repo: minevn-library
+
+      - name: Download DotMan & MineVNLib
+        run: |
+          mkdir -p target
+          wget -O ./target/DotMan.jar "https://github.com/minevn/dotman/releases/download/${{ steps.dotman-plugin.outputs.release }}/DotMan.jar"
+          wget -O ./target/MineVNLib.jar "https://github.com/minevn/minevn-library/releases/download/${{ steps.minevnlib-plugin.outputs.release }}/MineVNLib.jar"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: "DotMan"
+          path: ./target/
