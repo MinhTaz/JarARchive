@@ -1,0 +1,16 @@
+name: 8b8tCore
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/8b8tCore.yml'
+  schedule:
+    - cron: '0 */12 * * *'
+jobs:
+  8b8tCore:
+    uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
+    with:
+      repository: "AquaMCVN/8b8tCore"
+      name: "8b8tCore"
+      target: "target/*"
+      java: 17
