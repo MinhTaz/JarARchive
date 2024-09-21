@@ -27,10 +27,8 @@ jobs:
       run: |
         git config --global user.email "github-actions@github.com"
         git config --global user.name "GitHub Actions"
-    - name: Apply Patches
-      run: ./gradlew applyPatches
-    - name: gradle clean shadowJar
-      run: ./gradle clean shadowJar
+    - name: Build with Gradle
+      run: ./gradlew clean shadowJar
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -42,7 +40,6 @@ jobs:
         FILE_NAME=$(ls build/libs/*.jar | head -n 1)
         echo "file_name=$(basename $FILE_NAME)" >> $GITHUB_OUTPUT
       shell: bash
-
 
   dependency-submission:
     runs-on: ubuntu-latest
