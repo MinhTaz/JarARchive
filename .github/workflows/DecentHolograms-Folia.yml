@@ -1,0 +1,20 @@
+name: DecentHolograms-Folia
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/DecentHolograms-Folia.yml'
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  DecentHolograms-Folia:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Euphillya/DecentHolograms-Folia"
+      target: "bin/*"
+      name: "DecentHolograms-Folia"
+      java: 17
+      readonly: true
+
