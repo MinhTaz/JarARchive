@@ -1,0 +1,19 @@
+name: Skript
+
+on:
+  push:
+    branches: [ feature/folia ]
+    paths:
+      - '.github/workflows/Skript.yml'
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  Skript:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "SkriptLang/Skript"
+      target: "bin/*"
+      name: "Skript"
+      java: 17
+      readonly: true
