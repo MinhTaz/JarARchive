@@ -3,7 +3,7 @@ name: Skript
 on:
   push:
     branches:
-      - '**'
+      - 'feature/folia'
     tags-ignore:
       - '**'
 jobs:
