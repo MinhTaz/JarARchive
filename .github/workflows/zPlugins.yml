@@ -52,11 +52,3 @@ jobs:
                  $DISCORD_WEBHOOK
           fi
         shell: bash
-
-  zShop:
-    uses: HSGamer/ConstructProjects/.github/workflows/maven-build.yml@main
-    with:
-      repository: "Maxlego08/zShop"
-      name: "zShop"
-      target: "target/*"
-      java: 17
