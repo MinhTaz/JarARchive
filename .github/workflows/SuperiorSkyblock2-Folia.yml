@@ -1,0 +1,19 @@
+name: SuperiorSkyblock2-Folia
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/SuperiorSkyblock2-Folia.yml'
+  schedule:
+    - cron: '0 */12 * * *'
+
+jobs:
+  SuperiorSkyblock2-Folia:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "CuteLittleSky/SuperiorSkyblock2-Folia"
+      name: "SuperiorSkyblock2-Folia"
+      java: 17
+      target: "target/*"
+      readonly: true
