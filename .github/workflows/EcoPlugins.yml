@@ -6,7 +6,7 @@ on:
     paths:
       - '.github/workflows/EcoPlugins.yml'
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 */24 * * *'
 
 jobs:
   EcoJobs:
