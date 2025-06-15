@@ -1,4 +1,4 @@
-name: EcoPlugins
+name: EcoPlugins 
 
 on:
   push:
